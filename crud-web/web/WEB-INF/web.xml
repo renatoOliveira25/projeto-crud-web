@@ -9,9 +9,17 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>usuariosServlet</servlet-name>
+        <servlet-class>com.sistema.controller.UsuariosServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>usuariosServlet</servlet-name>
+        <url-pattern>/usuariosServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -19,6 +27,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>faces/index.xhtml</welcome-file>
+        <!--<welcome-file>faces/index.xhtml</welcome-file>-->
+        <welcome-file>faces/public/usuarios.jsp</welcome-file>
     </welcome-file-list>
 </web-app>
