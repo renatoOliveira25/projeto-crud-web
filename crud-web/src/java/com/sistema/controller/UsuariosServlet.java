@@ -5,6 +5,8 @@
  */
 package com.sistema.controller;
 
+import com.sistema.model.beans.BeanUsuarios;
+import com.sistema.model.dao.UsuariosDAOImp;
 import com.sistema.util.BDConnection;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -76,21 +78,18 @@ public class UsuariosServlet extends HttpServlet {
         //processRequest(request, response);
         
         PrintWriter out = response.getWriter();
+        /**
+        BeanUsuarios userBean = new BeanUsuarios();
+        userBean.setNomeUsuario(request.getParameter("nome"));
+        userBean.setSobrenomeUsuario(request.getParameter("sobrenome"));
+        userBean.setLogin(request.getParameter("login"));
+        userBean.setSenha(request.getParameter("senha"));
+        
+        UsuariosDAOImp usuariosDAO = new UsuariosDAOImp();
+        
+        usuariosDAO.inserirRegistro(userBean);
+        */
         out.println("Executou o método post");
-        
-        BDConnection connection = null;
-        
-        try {
-            if(connection.getConnection() != null) {
-                out.println("Conexão com o banco de dados efetuada com sucesso");
-            } else {
-                out.println("Não foi possível conectar ao banco de dados");
-            }
-        } catch (InstantiationException ex) {
-            Logger.getLogger(UsuariosServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(UsuariosServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     /**

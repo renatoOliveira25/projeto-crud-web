@@ -20,7 +20,7 @@ public class BDConnection {
     public static String user;
     public static String password;
     public static Connection conn = null;
-    public static String status = null;
+    public static String status = "Não foi possível conectar ao banco";
     
     public  BDConnection() {
         
@@ -31,7 +31,7 @@ public class BDConnection {
         driver = "com.mysql.jdbc.Driver";
         user = "root";
         password = "";
-        url = "jdbc:mysql://localhost:3306/" ;
+        url = "jdbc:mysql://localhost:3306/projeto-crud-1.0/" ;
         
         try {
             Class.forName(driver).newInstance();
@@ -62,6 +62,4 @@ public class BDConnection {
     public static String statusConnection() {
         return status;
     }
-    
-    
 }
