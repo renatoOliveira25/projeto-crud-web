@@ -78,17 +78,20 @@ public class UsuariosServlet extends HttpServlet {
         //processRequest(request, response);
         
         PrintWriter out = response.getWriter();
-        /**
+        
         BeanUsuarios userBean = new BeanUsuarios();
         userBean.setNomeUsuario(request.getParameter("nome"));
         userBean.setSobrenomeUsuario(request.getParameter("sobrenome"));
         userBean.setLogin(request.getParameter("login"));
         userBean.setSenha(request.getParameter("senha"));
         
+        out.println(userBean.getNomeUsuario() + "\t" + userBean.getSobrenomeUsuario() 
+                + "\t" + userBean.getLogin() + "\t" + userBean.getSenha());
+        
         UsuariosDAOImp usuariosDAO = new UsuariosDAOImp();
         
         usuariosDAO.inserirRegistro(userBean);
-        */
+        
         out.println("Executou o método post");
     }
 

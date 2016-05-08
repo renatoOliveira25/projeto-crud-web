@@ -19,19 +19,19 @@ public class BDConnection {
     public static String url;
     public static String user;
     public static String password;
-    public static Connection conn = null;
+    public static Connection conn;
     public static String status = "Não foi possível conectar ao banco";
-    
+        
     public  BDConnection() {
         
     }
     
-    public static java.sql.Connection getConnection() throws InstantiationException, IllegalAccessException {
+    public static java.sql.Connection getConnection() throws InstantiationException, IllegalAccessException, SQLException {
         
         driver = "com.mysql.jdbc.Driver";
         user = "root";
         password = "";
-        url = "jdbc:mysql://localhost:3306/projeto-crud-1.0/" ;
+        url = "jdbc:mysql://localhost:3306/projeto-crud-1.0";
         
         try {
             Class.forName(driver).newInstance();
@@ -46,17 +46,12 @@ public class BDConnection {
         return conn;
         
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        } catch (SQLException e) {
-            e.printStackTrace();
             return null;
         }
     }
     
     public static void closeConnection() throws SQLException {
         conn.close();
-        conn = null;
     }
     
     public static String statusConnection() {

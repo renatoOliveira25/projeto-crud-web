@@ -10,10 +10,8 @@ import com.sistema.util.BDConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -22,40 +20,40 @@ import java.util.logging.Logger;
 public class UsuariosDAOImp implements UsuariosDAO {
 
     public Connection conn = null;
-    public Statement st=null;
-    public ResultSet rs=null;
-    
+    public Statement st = null;
+    public ResultSet rs = null;
+
+    private final String insertQuery = "INSERT INTO usuarios (nome, sobrenome, login, senha) VALUES (?,?,?,?);";
+
     @Override
-    public boolean inserirRegistro(BeanUsuarios userBean) {
-        String sql = "INSERT INTO usuarios (nome, sobrenome, login, senha) VALUES (?,?,?,?)";
-        
-       try{
-           conn = BDConnection.getConnection();
+    public void inserirRegistro(BeanUsuarios userBean) {
+
+        try {
+            conn = BDConnection.getConnection();
            
-            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            try (PreparedStatement stmt = conn.prepareStatement(insertQuery)) {
                 stmt.setString(1, userBean.getNomeUsuario());
                 stmt.setString(2, userBean.getSobrenomeUsuario());
                 stmt.setString(3, userBean.getLogin());
-                stmt.setString(2, userBean.getSenha());
-                
+                stmt.setString(4, userBean.getSenha());
+
                 stmt.execute();
             }
-           
-           conn.close();
-           
-           return true;
-       } catch(Exception e) {
-           return false;
-       }
+            
+            conn.close();
+            
+        } catch (Exception e) {
+            //JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     @Override
-    public boolean deletarRegistro(BeanUsuarios userBean) {
+    public void deletarRegistro(BeanUsuarios userBean) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean atualizarRegistro(BeanUsuarios userBean) {
+    public void atualizarRegistro(BeanUsuarios userBean) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -68,5 +66,5 @@ public class UsuariosDAOImp implements UsuariosDAO {
     public ResultSet listarRegistros(BeanUsuarios userBean) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 }
+

@@ -1,0 +1,3 @@
+java.io.FileReader@6acad2aa
+Opa! Aconteceu alguma coisa *ERRO*	java.sql.SQLException: No value specified for parameter 4
+

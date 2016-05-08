@@ -14,9 +14,9 @@ import java.sql.ResultSet;
  */
 public interface UsuariosDAO {
     
-    public abstract boolean inserirRegistro(BeanUsuarios userBean);
-    public abstract boolean deletarRegistro(BeanUsuarios userBean);
-    public abstract boolean atualizarRegistro(BeanUsuarios userBean);
+    public abstract void inserirRegistro(BeanUsuarios userBean);
+    public abstract void deletarRegistro(BeanUsuarios userBean);
+    public abstract void atualizarRegistro(BeanUsuarios userBean);
     public abstract ResultSet consultarRegistro(BeanUsuarios userBean);
     public abstract ResultSet listarRegistros(BeanUsuarios userBean); 
     
