@@ -4,6 +4,7 @@
     Author     : Renato
 --%>
 
+<%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.sistema.model.beans.BeanUsuarios"%>
 <%@page import="com.sistema.model.dao.UsuariosDAO"%>
@@ -30,7 +31,7 @@
                     //criar código para recuperar lista de usuário do bd
                     //https://www.youtube.com/watch?v=OnzuVklXEVg
                     UsuariosDAOImp userDAO = new UsuariosDAOImp();
-                    ArrayList<BeanUsuarios> listaUsuarios = userDAO.listarRegistros();
+                    List<BeanUsuarios> listaUsuarios = userDAO.listarRegistros();
                     for (BeanUsuarios user: listaUsuarios) {
                 %>
                 <tr>

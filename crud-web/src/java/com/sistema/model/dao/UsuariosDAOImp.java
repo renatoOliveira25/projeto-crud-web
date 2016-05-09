@@ -81,7 +81,7 @@ public class UsuariosDAOImp implements UsuariosDAO {
             ResultSet rs = st.executeQuery(consultQuery);
             while(rs.next()){
                 BeanUsuarios usuario = new BeanUsuarios();
-                usuario.setIdUsuario(rs.getInt("id"));
+                //usuario.setIdUsuario(rs.getInt("id"));
                 usuario.setNomeUsuario(rs.getString("nome"));
                 usuario.setSobrenomeUsuario(rs.getString("sobrenome"));
                 usuario.setLogin(rs.getString("login"));
