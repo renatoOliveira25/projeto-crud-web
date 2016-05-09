@@ -71,16 +71,73 @@ public class UsuariosDAOImp implements UsuariosDAO {
             conn.close();
         }
         
+        /**
+         * https://danielniko.wordpress.com/2012/04/17/simple-crud-using-jsp-servlet-and-mysql/
+        try {
+            PreparedStatement preparedStatement = connection
+                    .prepareStatement("delete from users where userid=?");
+            // Parameters start with 1
+            preparedStatement.setInt(1, userId);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        */
+        
     }
 
     @Override
     public void atualizarRegistro(BeanUsuarios userBean) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        /**
+         * https://danielniko.wordpress.com/2012/04/17/simple-crud-using-jsp-servlet-and-mysql/
+         try {
+            PreparedStatement preparedStatement = connection
+                    .prepareStatement("update users set firstname=?, lastname=?, dob=?, email=?" +
+                            "where userid=?");
+            // Parameters start with 1
+            preparedStatement.setString(1, user.getFirstName());
+            preparedStatement.setString(2, user.getLastName());
+            preparedStatement.setDate(3, new java.sql.Date(user.getDob().getTime()));
+            preparedStatement.setString(4, user.getEmail());
+            preparedStatement.setInt(5, user.getUserid());
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        */
     }
 
     @Override
-    public ResultSet consultarRegistro(BeanUsuarios userBean) {
+    public ResultSet consultarRegistro(int idUsuario) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        /**
+         * https://danielniko.wordpress.com/2012/04/17/simple-crud-using-jsp-servlet-and-mysql/
+        User user = new User();
+        try {
+            PreparedStatement preparedStatement = connection.
+                    prepareStatement("select * from users where userid=?");
+            preparedStatement.setInt(1, userId);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                user.setUserid(rs.getInt("userid"));
+                user.setFirstName(rs.getString("firstname"));
+                user.setLastName(rs.getString("lastname"));
+                user.setDob(rs.getDate("dob"));
+                user.setEmail(rs.getString("email"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return user;
+        }
+        */
     }
 
     @Override
