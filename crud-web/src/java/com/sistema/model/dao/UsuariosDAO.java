@@ -8,6 +8,7 @@ package com.sistema.model.dao;
 import com.sistema.model.beans.BeanUsuarios;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -19,6 +20,6 @@ public interface UsuariosDAO {
     public abstract void deletarRegistro(BeanUsuarios userBean);
     public abstract void atualizarRegistro(BeanUsuarios userBean);
     public abstract ResultSet consultarRegistro(BeanUsuarios userBean);
-    public abstract ArrayList listarRegistros(); 
+    public abstract List<BeanUsuarios> listarRegistros(); 
     
 }

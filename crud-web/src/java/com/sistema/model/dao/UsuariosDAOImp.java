@@ -10,8 +10,12 @@ import com.sistema.util.BDConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -20,11 +24,12 @@ import java.util.ArrayList;
  */
 public class UsuariosDAOImp implements UsuariosDAO {
 
-    public Connection conn = null;
-    public Statement st = null;
-    public ResultSet rs = null;
+    public Connection conn;
+    public Statement st;
+    public ResultSet rs;
 
     private final String insertQuery = "INSERT INTO usuarios (nome, sobrenome, login, senha) VALUES (?,?,?,?);";
+    private final String consultQuery = "SELECT * FROM usuarios;";
 
     @Override
     public void inserirRegistro(BeanUsuarios userBean) {
@@ -64,8 +69,37 @@ public class UsuariosDAOImp implements UsuariosDAO {
     }
 
     @Override
-    public ArrayList listarRegistros() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<BeanUsuarios> listarRegistros() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        @SuppressWarnings("Convert2Diamond")
+        List<BeanUsuarios> usuarios = new ArrayList<BeanUsuarios>();
+        try {
+            conn = BDConnection.getConnection();
+           
+            st = (Statement) BDConnection.getConnection().createStatement();
+            ResultSet rs = st.executeQuery(consultQuery);
+            while(rs.next()){
+                BeanUsuarios usuario = new BeanUsuarios();
+                usuario.setIdUsuario(rs.getInt("id"));
+                usuario.setNomeUsuario(rs.getString("nome"));
+                usuario.setSobrenomeUsuario(rs.getString("sobrenome"));
+                usuario.setLogin(rs.getString("login"));
+                
+                usuarios.add(usuario);
+            }
+            
+        } catch (Exception e) {
+           //JOptionPane.showMessageDialog(null, e);
+           
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(UsuariosDAOImp.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return usuarios;
     }
 }
 

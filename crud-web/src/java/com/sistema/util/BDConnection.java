@@ -54,6 +54,10 @@ public class BDConnection {
         conn.close();
     }
     
+    public Connection getConn(){
+        return conn;
+    }
+    
     public static String statusConnection() {
         return status;
     }

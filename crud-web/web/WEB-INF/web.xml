@@ -28,6 +28,6 @@
     </session-config>
     <welcome-file-list>
         <!--<welcome-file>faces/index.xhtml</welcome-file>-->
-        <welcome-file>faces/public/usuarios.jsp</welcome-file>
+        <welcome-file>faces/public/listarUsuarios.jsp</welcome-file>
     </welcome-file-list>
 </web-app>
