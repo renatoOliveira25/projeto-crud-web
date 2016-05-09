@@ -56,8 +56,21 @@ public class UsuariosDAOImp implements UsuariosDAO {
     }
 
     @Override
-    public void deletarRegistro(BeanUsuarios userBean) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deletarRegistro(int idUsuario) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+       try {
+            conn = BDConnection.getConnection();
+            
+            st = (Statement) BDConnection.getConnection().createStatement();
+            st.execute(deleteQuery + idUsuario);
+            
+        } catch(Exception e) {
+            
+        } finally {
+            conn.close();
+        }
+        
     }
 
     @Override
