@@ -112,7 +112,7 @@ public class UsuariosDAOImp implements UsuariosDAO {
     }
 
     @Override
-    public ResultSet consultarRegistro(int idUsuario) {
+    public BeanUsuario consultarRegistro(int idUsuario) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         
         /**
