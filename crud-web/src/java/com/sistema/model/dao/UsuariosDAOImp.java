@@ -70,7 +70,6 @@ public class UsuariosDAOImp implements UsuariosDAO {
 
     @Override
     public List<BeanUsuarios> listarRegistros() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         
         @SuppressWarnings("Convert2Diamond")
         List<BeanUsuarios> usuarios = new ArrayList<BeanUsuarios>();
