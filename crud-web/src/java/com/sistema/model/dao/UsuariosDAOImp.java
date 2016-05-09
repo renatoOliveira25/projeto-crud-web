@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 
 /**
@@ -63,7 +64,7 @@ public class UsuariosDAOImp implements UsuariosDAO {
     }
 
     @Override
-    public ResultSet listarRegistros(BeanUsuarios userBean) {
+    public ArrayList listarRegistros() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
