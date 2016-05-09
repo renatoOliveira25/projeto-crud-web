@@ -1,2 +1,11 @@
 Listar utilizando JSP
 https://www.youtube.com/watch?v=OnzuVklXEVg
+
+Add, Edit, Delete(CRUD) in Java EE WebApp using JSP + Servlet
+https://www.youtube.com/watch?v=DN3VAZdhLik
+
+SIMPLE CRUD USING JSP, SERVLET AND MYSQL
+https://danielniko.wordpress.com/2012/04/17/simple-crud-using-jsp-servlet-and-mysql/
+
+
+http://naredesocial.blogspot.com.br/2014/06/crud-com-jsp-e-servlet-mysql-netbeans_21.html
