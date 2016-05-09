@@ -15,33 +15,32 @@ import java.sql.SQLException;
  */
 public class BDConnection {
 
-    public static String driver;
-    public static String url;
-    public static String user;
-    public static String password;
+    public static String driver ="com.mysql.jdbc.Driver";
+    public static String url = "jdbc:mysql://localhost:3306/projeto-crud-1.0";
+    public static String user = "root";
+    public static String password = "";
     public static Connection conn;
-    public static String status = "Não foi possível conectar ao banco";
+    //public static String status = "Não foi possível conectar ao banco";
         
     public  BDConnection() {
-        
+        try {
+            Class.forName(driver).newInstance();
+            conn = DriverManager.getConnection(url, user, password);
+        } catch (ClassNotFoundException e) {
+            return null;
+        }
     }
     
     public static java.sql.Connection getConnection() throws InstantiationException, IllegalAccessException, SQLException {
-        
-        driver = "com.mysql.jdbc.Driver";
-        user = "root";
-        password = "";
-        url = "jdbc:mysql://localhost:3306/projeto-crud-1.0";
-        
         try {
             Class.forName(driver).newInstance();
             conn = DriverManager.getConnection(url, user, password);
             
-            if(conn != null) {
-                status = "STATUS --> Conectado com sucesso";
-            } else {
-                status = "STATUS --> Não foi possível conectar ao banco de dados";
-            }
+            //if(conn != null) {
+            //    status = "STATUS --> Conectado com sucesso";
+            //} else {
+            //    status = "STATUS --> Não foi possível conectar ao banco de dados";
+            //}
             
         return conn;
         
