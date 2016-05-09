@@ -30,6 +30,8 @@ public class UsuariosDAOImp implements UsuariosDAO {
 
     private final String insertQuery = "INSERT INTO usuarios (nome, sobrenome, login, senha) VALUES (?,?,?,?);";
     private final String consultQuery = "SELECT * FROM usuarios;";
+    private final String deleteQuery = "DELETE FROM usuarios WHERE id=";
+    private final String alterQuery = "UPDATE usuarios SET 'nome'=" + " ,'sobrenome'=" + " ,'login'=" + " ,'senha'= ";
 
     @Override
     public void inserirRegistro(BeanUsuarios userBean) {
