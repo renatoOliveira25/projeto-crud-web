@@ -17,7 +17,7 @@ import java.util.List;
 public interface UsuariosDAO {
     
     public abstract void inserirRegistro(BeanUsuarios userBean);
-    public abstract void deletarRegistro(BeanUsuarios userBean);
+    public abstract void deletarRegistro(int idUsuario);
     public abstract void atualizarRegistro(BeanUsuarios userBean);
     public abstract ResultSet consultarRegistro(BeanUsuarios userBean);
     public abstract List<BeanUsuarios> listarRegistros(); 
