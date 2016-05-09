@@ -35,6 +35,7 @@
                     for (BeanUsuarios user: listaUsuarios) {
                 %>
                 <tr>
+                    <th><%= user.getIdUsuario() %></th>
                     <th><%= user.getNomeUsuario() %></th>
                     <th><%= user.getSobrenomeUsuario() %></th>
                     <th><%= user.getLogin() %></th>
