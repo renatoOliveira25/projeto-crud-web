@@ -31,7 +31,8 @@ public class UsuariosDAOImp implements UsuariosDAO {
     private final String insertQuery = "INSERT INTO usuarios (nome, sobrenome, login, senha) VALUES (?,?,?,?);";
     private final String consultQuery = "SELECT * FROM usuarios;";
     private final String deleteQuery = "DELETE FROM usuarios WHERE id=";
-    private final String alterQuery = "UPDATE usuarios SET 'nome'=" + " ,'sobrenome'=" + " ,'login'=" + " ,'senha'= ";
+    private final String cosultQueryByID = "SELECT * FROM usuarios WHERE id=?;";
+    private final String alterQuery = "UPDATE usuarios SET nome=?, sobrenome=?, login=?, senha=?;";
 
     @Override
     public void inserirRegistro(BeanUsuarios userBean) {
@@ -77,7 +78,7 @@ public class UsuariosDAOImp implements UsuariosDAO {
             PreparedStatement preparedStatement = connection
                     .prepareStatement("delete from users where userid=?");
             // Parameters start with 1
-            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(1, idUsuario);
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -94,15 +95,12 @@ public class UsuariosDAOImp implements UsuariosDAO {
         /**
          * https://danielniko.wordpress.com/2012/04/17/simple-crud-using-jsp-servlet-and-mysql/
          try {
-            PreparedStatement preparedStatement = connection
-                    .prepareStatement("update users set firstname=?, lastname=?, dob=?, email=?" +
-                            "where userid=?");
+            PreparedStatement preparedStatement = conn.prepareStatement(alterQuery);
             // Parameters start with 1
-            preparedStatement.setString(1, user.getFirstName());
-            preparedStatement.setString(2, user.getLastName());
-            preparedStatement.setDate(3, new java.sql.Date(user.getDob().getTime()));
-            preparedStatement.setString(4, user.getEmail());
-            preparedStatement.setInt(5, user.getUserid());
+            preparedStatement.setString(1, userBean.getNomeUsuario());
+            preparedStatement.setString(2, userBean.getSobrenomeUsuario());
+            preparedStatement.setString(3, userBean.getLogin());
+            preparedStatement.setString(4, userBean.getSenha());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -117,19 +115,18 @@ public class UsuariosDAOImp implements UsuariosDAO {
         
         /**
          * https://danielniko.wordpress.com/2012/04/17/simple-crud-using-jsp-servlet-and-mysql/
-        User user = new User();
+        BeanUsuario userBean = new BeanUsuario();
         try {
-            PreparedStatement preparedStatement = connection.
-                    prepareStatement("select * from users where userid=?");
-            preparedStatement.setInt(1, userId);
+            PreparedStatement preparedStatement = conn.prepareStatement(cosultQueryByID);
+            preparedStatement.setInt(1, idUsuario);
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
-                user.setUserid(rs.getInt("userid"));
-                user.setFirstName(rs.getString("firstname"));
-                user.setLastName(rs.getString("lastname"));
-                user.setDob(rs.getDate("dob"));
-                user.setEmail(rs.getString("email"));
+                //userBean.setIdUsuario(rs.getInt("userid"));
+                userBean.setNomeUsuario(rs.getString("nome"));
+                userBean.setSobrenomeUsuario(rs.getString("sobrenome"));
+                userBean.setLogin(rs.getString("login"));
+                userBean.setSenha(rs.getString("senha"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
