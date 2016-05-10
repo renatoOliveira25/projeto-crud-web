@@ -12,3 +12,6 @@ http://naredesocial.blogspot.com.br/2014/06/crud-com-jsp-e-servlet-mysql-netbean
 
 CRUD com JSP
 http://www.linhadecodigo.com.br/artigo/2997/crud-com-jsp.aspx
+
+JSP Tutorial
+http://www.tutorialspoint.com/jsp/
